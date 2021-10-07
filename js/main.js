@@ -75,16 +75,16 @@ const getArrayWithUniqueElements = (array) => {
 // функция, возвращающая массив неповторяющихся двузначных номеров пользователей в рандомизированном порядке (для отображения аватара от 01 до 10).
 const getUserNumbers = () => {
   const userNumbers = [];
-  let arrayNumbers = [];
-  let set;
-  while (arrayNumbers.length < 10) {
+  let arrayUserNumbers = [];
+  let nonDuplicateUserNumbers;
+  while (arrayUserNumbers.length < 10) {
     const number = getRandomIntInclusive(1, 10);
     const userNumber = number < 10 ? `0${number}` : `${number}`;
     userNumbers.push(userNumber);
-    set = new Set(userNumbers);
-    arrayNumbers = Array.from(set);
+    nonDuplicateUserNumbers = new Set(userNumbers);
+    arrayUserNumbers = Array.from(nonDuplicateUserNumbers);
   }
-  return arrayNumbers;
+  return arrayUserNumbers;
 };
 const ArrayUserNumbers = getUserNumbers();
 
