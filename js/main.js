@@ -32,3 +32,99 @@ function getRandomArbitrary(min, max, decimalPlaces) {
   return rounding(result, decimalPlaces);
 }
 getRandomArbitrary();
+
+const TYPES = [
+  'palace',
+  'flat',
+  'house',
+  'bungalow',
+  'hotel',
+];
+
+const TIMES = [
+  '12:00',
+  '13:00',
+  '14:00',
+];
+
+const FEATURES = [
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+  'conditioner',
+];
+
+const PHOTOS = [
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
+];
+
+const MIN_LAT = 35.65000;
+const MAX_LAT = 35.70000;
+const MIN_LNG = 139.70000;
+const MAX_LNG = 139.80000;
+
+// функция принимающая массив и возвращающая случайный элемент этого массива.
+/*const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
+getRandomArrayElement();*/
+
+// функция, принимающая массив и возвращающая этот массив с удаленными из него повторяющимися элементами.
+const getArrayWithUniqueElements = (array) => {
+  const set = new Set(array);
+  return array = Array.from(set);
+};
+
+// функция, возвращающая массив неповторяющихся двузначных номеров пользователей в рандомизированном порядке (для отображения аватара от 01 до 10).
+const getUserNumbers = () => {
+  const userNumbers = [];
+  let arrayUserNumbers = [];
+  let nonDuplicateUserNumbers;
+  while (arrayUserNumbers.length < 10) {
+    const number = getRandomIntInclusive(1, 10);
+    const userNumber = number < 10 ? `0${number}` : `${number}`;
+    userNumbers.push(userNumber);
+    nonDuplicateUserNumbers = new Set(userNumbers);
+    arrayUserNumbers = Array.from(nonDuplicateUserNumbers);
+  }
+  return arrayUserNumbers;
+};
+const ArrayUserNumbers = getUserNumbers();
+
+const SIMILAR_ANNOUNCEMENT_COUNT = 10;
+
+const createAnnouncement = () => {
+  const getRandomPhotosLength = getRandomIntInclusive(0, PHOTOS.length);
+  const getRandomArrayPhotos = () => PHOTOS[getRandomIntInclusive(0, PHOTOS.length - 1)];
+  const getRandomFeaturesLength = getRandomIntInclusive(0, FEATURES.length);
+  const getRandomArrayFeatures = () => FEATURES[getRandomIntInclusive(0, FEATURES.length - 1)];
+  const getRandomLat = () => getRandomArbitrary(MIN_LAT, MAX_LAT, 5);
+  const getRandomLng = () => getRandomArbitrary(MIN_LNG, MAX_LNG, 5);
+
+  return {
+    author: {
+      avatar: `img/avatars/user${ArrayUserNumbers.shift()}.png`,
+    },
+    offer: {
+      title: 'Заголовок предложения',
+      address: `${getRandomLat()}, ${getRandomLng()}`,
+      price: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
+      type: TYPES[getRandomIntInclusive(0, TYPES.length - 1)],
+      rooms: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
+      guests: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
+      checkin: TIMES[0],
+      checkout: TIMES[2],
+      features: getArrayWithUniqueElements(Array.from({length: getRandomFeaturesLength}, getRandomArrayFeatures)),
+      description: 'описание помещения',
+      photos: Array.from({length: getRandomPhotosLength}, getRandomArrayPhotos),
+    },
+    location: {
+      lat: getRandomLat(),
+      lng: getRandomLng(),
+    },
+  };
+};
+
+Array.from({length: SIMILAR_ANNOUNCEMENT_COUNT}, createAnnouncement);
