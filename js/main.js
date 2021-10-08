@@ -62,6 +62,11 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
+const MIN_LAT = 35.65000;
+const MAX_LAT = 35.70000;
+const MIN_LNG = 139.70000;
+const MAX_LNG = 139.80000;
+
 // функция принимающая массив и возвращающая случайный элемент этого массива.
 /*const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
 getRandomArrayElement();*/
@@ -95,8 +100,8 @@ const createAnnouncement = () => {
   const getRandomArrayPhotos = () => PHOTOS[getRandomIntInclusive(0, PHOTOS.length - 1)];
   const getRandomFeaturesLength = getRandomIntInclusive(0, FEATURES.length);
   const getRandomArrayFeatures = () => FEATURES[getRandomIntInclusive(0, FEATURES.length - 1)];
-  const getRandomLat = () => getRandomArbitrary(35.65000, 35.70000, 5);
-  const getRandomLng = () => getRandomArbitrary(139.70000, 139.80000, 5);
+  const getRandomLat = () => getRandomArbitrary(MIN_LAT, MAX_LAT, 5);
+  const getRandomLng = () => getRandomArbitrary(MIN_LNG, MAX_LNG, 5);
 
   return {
     author: {
