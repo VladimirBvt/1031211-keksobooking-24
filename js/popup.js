@@ -6,7 +6,7 @@ const announcementContainer = document.querySelector('.map__canvas');
 announcementContainer;
 const templateCard = document.querySelector('#card').content.querySelector('.popup');
 const newCard = templateCard.cloneNode(true);
-
-console.log(newCard);
+newCard;
+//console.log(newCard);
 
 export * from './popup';
