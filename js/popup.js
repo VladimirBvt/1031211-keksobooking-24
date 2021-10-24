@@ -15,6 +15,7 @@ const createPhotos = function (someNotice) {
     return image;
   });
 };
+createPhotos();
 
 similarNotices.forEach((notice) => {
   const noticeElement = similarCardTemplate.cloneNode(true);
@@ -27,10 +28,10 @@ similarNotices.forEach((notice) => {
   noticeElement.querySelector('.popup__features').textContent = notice.offer.features; // ! нужно будет найти src картинок фич и отобразить их
   noticeElement.querySelector('.popup__description').textContent = notice.offer.description;
   if (notice.offer.photos.length > 0) {
-    const photosContainer = noticeElement.querySelector('.popup__photos');
+    //const photosContainer = noticeElement.querySelector('.popup__photos');
     //TODO Не ясен вывод
-    const photos = createPhotos(notice);
-    console.log(photos);
+    //const photos = createPhotos(notice);
+    //console.log(photos);
     //photosContainer.appendChild(photos);
   }
   similarListFragment.appendChild(noticeElement);
