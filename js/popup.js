@@ -18,8 +18,18 @@ similarNotices.forEach((notice) => {
   noticeElement.querySelector('.popup__type').textContent = notice.offer.type;
   noticeElement.querySelector('.popup__text--capacity').textContent = `${notice.offer.rooms} комнаты для ${notice.offer.guests} гостей`;
   noticeElement.querySelector('.popup__text--time').textContent = `Заезд после ${notice.offer.checkin}, выезд до ${notice.offer.checkout}`;
-  noticeElement.querySelector('.popup__features').textContent = notice.offer.features;
-  noticeElement.querySelector('.popup__description').textContent = notice.offer.description;
+  const featuresContainer = noticeElement.querySelector('.popup__features');
+  const featuresList = featuresContainer.querySelectorAll('.popup__feature');
+  const featuresNotice = notice.offer.features;
+  const modifiers = featuresNotice.map((feature) => `popup__feature--${feature}`);
+  featuresList.forEach((featuresListItem) => {
+    const modifier = featuresListItem.classList[1];
+    if (!modifiers.includes(modifier)) {
+      featuresListItem.remove();
+    }
+  });
+  const description = noticeElement.querySelector('.popup__description');
+  description.textContent = notice.offer.description || description.remove();
   const photosContainer = noticeElement.querySelector('.popup__photos');
   const sources = notice.offer.photos;
   for (let i = 0; i < notice.offer.photos.length; i ++) {
