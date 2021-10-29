@@ -1,2 +1,3 @@
-import '/js/util';
-import '/js/data';
+import './util.js';
+import './data.js';
+import './popup.js';
