@@ -1,4 +1,5 @@
 import {cardsContainer} from './popup.js';
+import {TYPES, TIMES} from './data.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
 const form = document.querySelector('.ad-form');
@@ -94,5 +95,45 @@ roomNumber.addEventListener('change', () => {
     capacityItems.forEach((capacityItem) => {
       capacityItem.disabled = false;
     });
+  }
+});
+
+const MIN_PRICES = ['0', '1000', '3000', '5000', '10000'];
+
+// изменение поля ввода "типа жилья" меняет в поле ввода "цена за ночь" минимальную цену и плейсхолдер
+const price = document.querySelector('#price');
+const typeOfHousing = document.querySelector('#type');
+
+typeOfHousing.addEventListener('change', () => {
+  for (let i = 0; i < TYPES.length; i ++) {
+    const minPrice = MIN_PRICES[i];
+    const type = TYPES[i];
+    const types = Object.keys(type);
+    if (typeOfHousing.value === types[0]) {
+      price.setAttribute('min', minPrice);
+      price.setAttribute('placeholder', minPrice);
+    }
+  }
+});
+
+// синхронизация полей времени заезда и выезда
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
+
+timeIn.addEventListener('change',() => {
+  for (let i = 0; i < TIMES.length; i ++) {
+    const time = TIMES[i];
+    if (timeIn.value === time) {
+      timeOut.value = time;
+    }
+  }
+});
+
+timeOut.addEventListener('change', () => {
+  for (let i = 0; i < TIMES.length; i ++) {
+    const time = TIMES[i];
+    if (timeOut.value === time) {
+      timeIn.value = time;
+    }
   }
 });
