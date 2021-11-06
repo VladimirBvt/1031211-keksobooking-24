@@ -1,13 +1,5 @@
 import {getRandomIntInclusive, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers} from './util.js';
 
-/*const TYPES = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-  'hotel',
-];*/
-
 const TIMES = [
   '12:00',
   '13:00',
@@ -31,7 +23,7 @@ const PHOTOS = [
 
 const TYPES = [
   {
-    palace: 'Дворец',
+    bungalow: 'Бунгало',
   },
   {
     flat: 'Квартира',
@@ -40,10 +32,10 @@ const TYPES = [
     house: 'Дом',
   },
   {
-    bungalow: 'Бунгало',
+    hotel: 'Отель',
   },
   {
-    hotel: 'Отель',
+    palace: 'Дворец',
   },
 ];
 
@@ -101,4 +93,4 @@ const createAnnouncement = () => {
 
 const noticesRandom = Array.from({length: SIMILAR_ANNOUNCEMENT_COUNT}, createAnnouncement);
 
-export {createAnnouncement, ArrayUserNumbers, noticesRandom};
+export {createAnnouncement, ArrayUserNumbers, noticesRandom, TYPES, TIMES};
