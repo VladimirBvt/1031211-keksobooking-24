@@ -1,5 +1,6 @@
 import {noticesRandom} from './data.js';
 
+// создание и отрисовка похожих объявлений
 const cardsContainer = document.querySelector('.map__canvas');
 const similarCardTemplate = document.querySelector('#card').content.querySelector('.popup');
 const similarNotices = noticesRandom;
@@ -44,7 +45,7 @@ similarNotices.forEach((notice) => {
   similarListFragment.appendChild(noticeElement);
 });
 
-cardsContainer.appendChild(similarListFragment);
+//cardsContainer.appendChild(similarListFragment);
 
 
 export {cardsContainer};
