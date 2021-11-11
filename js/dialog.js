@@ -137,3 +137,6 @@ timeOut.addEventListener('change', () => {
     }
   }
 });
+
+
+export {enableActivity, enableInactivity};

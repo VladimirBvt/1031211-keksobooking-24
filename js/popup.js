@@ -46,6 +46,7 @@ similarNotices.forEach((notice) => {
 });
 
 //cardsContainer.appendChild(similarListFragment);
+console.log(similarNotices);
 
 
-export {cardsContainer};
+export {cardsContainer, similarNotices};

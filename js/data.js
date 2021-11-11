@@ -43,6 +43,9 @@ const MIN_LAT = 35.65000;
 const MAX_LAT = 35.70000;
 const MIN_LNG = 139.70000;
 const MAX_LNG = 139.80000;
+const MAX_PRICE = 1000000;
+const MAX_GUESTS = 100;
+const MAX_ROOMS = 100;
 
 const ArrayUserNumbers = getUserNumbers();
 
@@ -74,10 +77,10 @@ const createAnnouncement = () => {
     offer: {
       title: 'Заголовок предложения',
       address: `${getRandomLat()}, ${getRandomLng()}`,
-      price: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
+      price: getRandomIntInclusive(0, MAX_PRICE),
       type: getType(),
-      rooms: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
-      guests: getRandomIntInclusive(0, Number.MAX_SAFE_INTEGER),
+      rooms: getRandomIntInclusive(0, MAX_ROOMS),
+      guests: getRandomIntInclusive(0, MAX_GUESTS),
       checkin: TIMES[0],
       checkout: TIMES[2],
       features: getArrayWithUniqueElements(Array.from({length: getRandomFeaturesLength}, getRandomArrayFeatures)),
