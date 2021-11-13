@@ -1,5 +1,5 @@
 import {enableActivity} from './dialog.js';
-import {similarNotices} from './popup.js';
+import {similarNotices} from './similar-list.js';
 
 const mymap = L.map('map-canvas')
   .on('load', () => {
@@ -46,12 +46,14 @@ const createCustomPopup = (point) => {
   return popupElement;
 };
 
+// создание иконки для главного маркера
 const mainPinIcon = L.icon({
   iconUrl: './img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
 
+// создание главной метки
 const mainMarker = L.marker(
   {
     lat: 35.7,
@@ -62,6 +64,8 @@ const mainMarker = L.marker(
     icon: mainPinIcon,
   },
 );
+
+// размещение главной метки на карту
 mainMarker.addTo(mymap);
 
 // по событию перемещения главной метки, меняется содержимое поля Адрес в форме
@@ -80,12 +84,15 @@ mainMarker.on('moveend', (evt) => {
   address.value = `${coordinateLat}, ${coordinateLng}`;
 });
 
+// создание иконки для обычных меток
 const markerIcon = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
+// создание обычных меток объявлений на основании списка похожих объявлений и размещение их на карте, а также создание баллуна к каждому из этих объявлений
+//const renderMarkerNotices = (similarNotices) => {};
 similarNotices.forEach((similarNotice) => {
   const marker = L.marker(
     {

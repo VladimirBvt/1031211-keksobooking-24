@@ -1,4 +1,4 @@
-import {cardsContainer} from './popup.js';
+import {cardsContainer} from './similar-list.js';
 import {TYPES, TIMES} from './data.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
