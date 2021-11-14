@@ -116,10 +116,11 @@ const getUserNumbers = () => {
 };
 getUserNumbers();
 
+// eslint-disable-next-line no-unused-vars
 const alertErrorTemplate = document.querySelector('#error').content.querySelector('.error');
 
 // показ сообщения об ошибке
-const showAlertError = (message) => {
+/*const showAlertError = (message) => {
   const alertContainer = alertErrorTemplate.cloneNode(true);
   const errorButton = alertContainer.querySelector('.error__button');
 
@@ -138,7 +139,7 @@ const showAlertError = (message) => {
   };
   closeErrorMessage();
   document.body.append(alertContainer);
-};
+};*/
 
 
 export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};

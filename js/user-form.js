@@ -155,16 +155,13 @@ const setUserFormSubmit = (onSuccess) => {
       },
     ).then(() => onSuccess)
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.error(err);
       });
   });
 };
 
 // закрытие баллуна
-// eslint-disable-next-line no-unused-vars
-const closePopup = () => {
-  mymap.closePopup();
-};
 
 // возвращение всех полей формы в первоначальное состояние
 
