@@ -3,9 +3,13 @@ import './data.js';
 import './similar-list.js';
 import './dialog.js';
 import './map.js';
+/*
+import {renderMarkerNotices} from './map.js';
 
-/*fetch('https://24.javascript.pages.academy/keksobooking/data')
+fetch('https://24.javascript.pages.academy/keksobooking/data')
   .then((response) => response.json())
   .then((notices) => {
     console.log(notices);
-  });*/
+    //renderMarkerNotices(notices);
+  });
+  */
