@@ -116,4 +116,29 @@ const getUserNumbers = () => {
 };
 getUserNumbers();
 
+const alertErrorTemplate = document.querySelector('#error').content.querySelector('.error');
+
+// показ сообщения об ошибке
+const showAlertError = (message) => {
+  const alertContainer = alertErrorTemplate.cloneNode(true);
+  const errorButton = alertContainer.querySelector('.error__button');
+
+  const onButtonClick = () => {
+    errorButton.addEventListener('click', () => {
+      alertContainer.classList.add('hidden');
+    });
+  };
+  onButtonClick();
+  const closeErrorMessage = () => {
+    document.body.addEventListener('click', () => {
+      if (alertContainer) {
+        alertContainer.remove();
+      }
+    });
+  };
+  closeErrorMessage();
+  document.body.append(alertContainer);
+};
+
+
 export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};

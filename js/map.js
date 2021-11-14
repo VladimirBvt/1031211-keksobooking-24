@@ -125,4 +125,4 @@ const renderMarkerNotices = (similarNotices) => {
 };
 
 
-export {renderMarkerNotices, mymap};
+export {renderMarkerNotices};

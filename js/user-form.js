@@ -1,6 +1,6 @@
 import {cardsContainer} from './similar-list.js';
 import {TYPES, TIMES} from './data.js';
-import {mymap} from './map.js';
+//import {mymap} from './map.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
 const form = document.querySelector('.ad-form');
@@ -153,7 +153,10 @@ const setUserFormSubmit = (onSuccess) => {
         method: 'POST',
         body: formData,
       },
-    );
+    ).then(() => onSuccess)
+      .catch((err) => {
+        console.error(err);
+      });
   });
 };
 
