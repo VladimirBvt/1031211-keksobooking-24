@@ -1,5 +1,6 @@
 import {cardsContainer} from './similar-list.js';
 import {TYPES, TIMES} from './data.js';
+import {mymap} from './map.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
 const form = document.querySelector('.ad-form');
@@ -138,5 +139,32 @@ timeOut.addEventListener('change', () => {
   }
 });
 
+// объявление функции отправки формы методом AJAX
+// eslint-disable-next-line no-unused-vars
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
-export {enableActivity, enableInactivity};
+    const formData = new FormData(evt.target);
+
+    fetch(
+      'https://24.javascript.pages.academy/keksobooking',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    );
+  });
+};
+
+// закрытие баллуна
+// eslint-disable-next-line no-unused-vars
+const closePopup = () => {
+  mymap.closePopup();
+};
+
+// возвращение всех полей формы в первоначальное состояние
+
+// возвращение метки адреса в исходное состояние
+
+export {enableActivity, enableInactivity, setUserFormSubmit};

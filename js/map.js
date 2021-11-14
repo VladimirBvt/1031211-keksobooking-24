@@ -1,4 +1,4 @@
-import {enableActivity} from './dialog.js';
+import {enableActivity} from './user-form.js';
 import {TYPES} from './data.js';
 //import {similarNotices} from './similar-list.js';
 
@@ -125,4 +125,4 @@ const renderMarkerNotices = (similarNotices) => {
 };
 
 
-export {renderMarkerNotices};
+export {renderMarkerNotices, mymap};
