@@ -124,5 +124,41 @@ const renderMarkerNotices = (similarNotices) => {
   });
 };
 
+const renderMarkerNotices1 = (similarNotices) => {
+  L.map('map-canvas')
+    .on('load', () => {
+      enableActivity();
+    })
+    .setView({
+      lat: 35.7,
+      lng: 139.425,
+    }, 10);
 
-export {renderMarkerNotices};
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>',
+  }).addTo(mymap);
+  similarNotices.forEach((similarNotice) => {
+    const marker = L.marker(
+      {
+        lat: similarNotice.location.lat,
+        lng: similarNotice.location.lng,
+      },
+      {
+        icon: markerIcon,
+      },
+    );
+
+    marker.addTo(mymap);
+    marker.bindPopup(createCustomPopup(similarNotice));
+  });
+};
+
+/*
+const form = document.querySelector('.ad-form');
+const onFormSubmit = form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  console.log('1234567891011121314151617181920212223');
+});
+*/
+
+export {renderMarkerNotices, renderMarkerNotices1, mymap};
