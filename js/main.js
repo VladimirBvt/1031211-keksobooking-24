@@ -13,6 +13,7 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
     if (response.ok) {
       return response.json();
     }
+    throw new Error(`${response.status} ${response.statusText}`);
   })
   .then((notices) => {
     renderMarkerNotices(notices);
@@ -20,6 +21,9 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
       evt.preventDefault();
       mymap.closePopup();
     });
+  })
+  .catch((err) => {
+    console.error(err);
   });
 // 123456789012345678901234567890
 // отправка формы
