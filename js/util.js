@@ -147,7 +147,7 @@ const showMessageSuccess = () => {
   const messageSuccess = messageTemplate.cloneNode(true);
   document.body.append(messageSuccess);
 };
-showMessageSuccess();
+//showMessageSuccess();
 
 // закрытие сообщения по клику на произвольную область экрана
 const onBodyClick = () => {
@@ -159,7 +159,7 @@ const onBodyClick = () => {
 onBodyClick();
 
 // закрытие сообщения по нажатию клавиши Esc
-const onButtonkeyDown = () => {
+const onButtonKeydown = () => {
   const messageElement = document.querySelector('.success');
   document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
@@ -167,6 +167,6 @@ const onButtonkeyDown = () => {
     }
   });
 };
-onButtonkeyDown();
+onButtonKeydown();
 
 export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};

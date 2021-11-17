@@ -140,7 +140,6 @@ timeOut.addEventListener('change', () => {
 });
 
 // объявление функции отправки формы методом AJAX
-// eslint-disable-next-line no-unused-vars
 const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
