@@ -141,5 +141,32 @@ const alertErrorTemplate = document.querySelector('#error').content.querySelecto
   document.body.append(alertContainer);
 };*/
 
+// показ сообщения об успешной отправки данных
+const showMessageSuccess = () => {
+  const messageTemplate = document.querySelector('#success').content.querySelector('.success');
+  const messageSuccess = messageTemplate.cloneNode(true);
+  document.body.append(messageSuccess);
+};
+showMessageSuccess();
+
+// закрытие сообщения по клику на произвольную область экрана
+const onBodyClick = () => {
+  const messageElement = document.querySelector('.success');
+  document.body.addEventListener('click', () => {
+    messageElement.classList.add('hidden');
+  });
+};
+onBodyClick();
+
+// закрытие сообщения по нажатию клавиши Esc
+const onButtonkeyDown = () => {
+  const messageElement = document.querySelector('.success');
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      messageElement.classList.add('hidden');
+    }
+  });
+};
+onButtonkeyDown();
 
 export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};
