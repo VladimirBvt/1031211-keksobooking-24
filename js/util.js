@@ -58,8 +58,7 @@ getRandomPositiveFloat();
 function getRandomIntInclusive(min, max) {
   //max <= min ? console.log('Ошибка. Введите значение большее, чем min.');
   if (max <= min) {
-    // eslint-disable-next-line no-console
-    console.log('Ошибка. Введите значение большее, чем min.');
+    //console.log('Ошибка. Введите значение большее, чем min.');
   } else {
     min < 0 ? (min *= -1) : min;
     max < 0 ? (max *= -1) : max;
@@ -79,8 +78,7 @@ function rounding(num, zeros) {
 //Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно. decimalPlaces - количество знаков после запятой.
 function getRandomArbitrary(min, max, decimalPlaces) {
   if (max <= min) {
-    // eslint-disable-next-line no-console
-    console.log('Ошибка. Введите значение большее, чем min.');
+    //console.log('Ошибка. Введите значение большее, чем min.');
   }
   min < 0 ? (min *= -1) : min;
   max < 0 ? (max *= -1) : max;
