@@ -155,7 +155,6 @@ const setUserFormSubmit = (onSuccess) => {
       },
     ).then(() => onSuccess)
       .catch((err) => {
-        // eslint-disable-next-line no-console
         console.error(err);
       });
   });

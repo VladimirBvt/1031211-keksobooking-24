@@ -9,7 +9,11 @@ import {setUserFormSubmit} from './user-form.js';
 const form = document.querySelector('.ad-form');
 
 fetch('https://24.javascript.pages.academy/keksobooking/data')
-  .then((response) => response.json())
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  })
   .then((notices) => {
     renderMarkerNotices(notices);
     form.addEventListener('submit', (evt) => {
