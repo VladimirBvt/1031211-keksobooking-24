@@ -142,6 +142,7 @@ const alertErrorTemplate = document.querySelector('#error').content.querySelecto
 };*/
 
 // показ сообщения об успешной отправки данных
+// eslint-disable-next-line no-unused-vars
 const showMessageSuccess = () => {
   const messageTemplate = document.querySelector('#success').content.querySelector('.success');
   const messageSuccess = messageTemplate.cloneNode(true);
