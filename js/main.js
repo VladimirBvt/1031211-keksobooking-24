@@ -23,6 +23,7 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
     });
   })
   .catch((err) => {
+    // eslint-disable-next-line no-console
     console.error(err);
   });
 // 123456789012345678901234567890
