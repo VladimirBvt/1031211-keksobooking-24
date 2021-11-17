@@ -64,11 +64,6 @@ const createAnnouncement = () => {
   const getRandomArrayFeatures = () => FEATURES[getRandomIntInclusive(0, FEATURES.length - 1)];
   const getRandomLat = () => getRandomArbitrary(MIN_LAT, MAX_LAT, 5);
   const getRandomLng = () => getRandomArbitrary(MIN_LNG, MAX_LNG, 5);
-  /*const createPhotos = function () {
-    const getSources = Array.from({length: getRandomPhotosLength}, getRandomArrayPhotos);
-    return console.log(getSources);
-  };
-  createPhotos();*/
 
   return {
     author: {

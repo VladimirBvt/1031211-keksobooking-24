@@ -116,31 +116,6 @@ const getUserNumbers = () => {
 };
 getUserNumbers();
 
-// eslint-disable-next-line no-unused-vars
-const alertErrorTemplate = document.querySelector('#error').content.querySelector('.error');
-
-// показ сообщения об ошибке
-/*const showAlertError = (message) => {
-  const alertContainer = alertErrorTemplate.cloneNode(true);
-  const errorButton = alertContainer.querySelector('.error__button');
-
-  const onButtonClick = () => {
-    errorButton.addEventListener('click', () => {
-      alertContainer.classList.add('hidden');
-    });
-  };
-  onButtonClick();
-  const closeErrorMessage = () => {
-    document.body.addEventListener('click', () => {
-      if (alertContainer) {
-        alertContainer.remove();
-      }
-    });
-  };
-  closeErrorMessage();
-  document.body.append(alertContainer);
-};*/
-
 // закрытие сообщения по клику на произвольную область экрана
 const onBodyClick = (messageElement) => {
   document.body.addEventListener('click', () => {
@@ -167,7 +142,6 @@ const onButtonClick = (messageElement) => {
 
 
 // показ сообщения об успешной отправки данных
-// eslint-disable-next-line no-unused-vars
 const showMessageSuccess = () => {
   const messageTemplate = document.querySelector('#success').content.querySelector('.success');
   const messageSuccess = messageTemplate.cloneNode(true);
@@ -175,10 +149,8 @@ const showMessageSuccess = () => {
   onBodyClick(messageSuccess);
   onButtonKeydown(messageSuccess);
 };
-//showMessageSuccess();
 
 // показ сообщения об ошибке
-// eslint-disable-next-line no-unused-vars
 const showMessageError = () => {
   const messageTemplate = document.querySelector('#error').content.querySelector('.error');
   const messageError = messageTemplate.cloneNode(true);
@@ -187,7 +159,6 @@ const showMessageError = () => {
   onButtonKeydown(messageError);
   onButtonClick(messageError);
 };
-//showMessageError();
 
 
-export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};
+export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers, showMessageSuccess, showMessageError};

@@ -1,6 +1,5 @@
 import {enableActivity} from './user-form.js';
 import {TYPES} from './data.js';
-//import {similarNotices} from './similar-list.js';
 
 const mymap = L.map('map-canvas')
   .on('load', () => {
@@ -83,6 +82,14 @@ const mainMarker = L.marker(
 // размещение главной метки на карту
 mainMarker.addTo(mymap);
 
+// функция возврата главного маркера на первоначальное положение
+const returnOriginPositionMarker = () => {
+  mainMarker.setLatLng({
+    lat: 35.7,
+    lng: 139.425,
+  });
+};
+
 // по событию перемещения главной метки, меняется содержимое поля Адрес в форме
 const address = document.querySelector('#address');
 address.value = '35.7, 139.425';
@@ -153,12 +160,5 @@ const renderMarkerNotices1 = (similarNotices) => {
   });
 };
 
-/*
-const form = document.querySelector('.ad-form');
-const onFormSubmit = form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  console.log('1234567891011121314151617181920212223');
-});
-*/
 
-export {renderMarkerNotices, renderMarkerNotices1, mymap};
+export {renderMarkerNotices, renderMarkerNotices1, mymap, returnOriginPositionMarker};

@@ -1,6 +1,8 @@
 import {cardsContainer} from './similar-list.js';
 import {TYPES, TIMES} from './data.js';
-//import {mymap} from './map.js';
+
+import {showMessageSuccess, showMessageError} from './util.js';
+import {returnOriginPositionMarker} from './map.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
 const form = document.querySelector('.ad-form');
@@ -140,7 +142,7 @@ timeOut.addEventListener('change', () => {
 });
 
 // объявление функции отправки формы методом AJAX
-const setUserFormSubmit = (onSuccess) => {
+const setUserFormSubmit = () => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -152,18 +154,18 @@ const setUserFormSubmit = (onSuccess) => {
         method: 'POST',
         body: formData,
       },
-    ).then(() => onSuccess)
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error(err);
-      });
+    ).then(() => {
+      showMessageSuccess();
+    })
+      .then(() => {
+        form.reset();
+      })
+      .then(() => {
+        returnOriginPositionMarker();
+      })
+      .catch(showMessageError);
   });
 };
 
-// закрытие баллуна
-
-// возвращение всех полей формы в первоначальное состояние
-
-// возвращение метки адреса в исходное состояние
 
 export {enableActivity, enableInactivity, setUserFormSubmit};
