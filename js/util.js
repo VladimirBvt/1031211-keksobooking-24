@@ -157,6 +157,15 @@ const onButtonKeydown = (messageElement) => {
   });
 };
 
+// закрытие сообщения по нажатию на кнопку
+const onButtonClick = (messageElement) => {
+  const button = document.querySelector('.error__button');
+  button.addEventListener('click', () => {
+    messageElement.classList.add('hidden');
+  });
+};
+
+
 // показ сообщения об успешной отправки данных
 // eslint-disable-next-line no-unused-vars
 const showMessageSuccess = () => {
@@ -167,6 +176,18 @@ const showMessageSuccess = () => {
   onButtonKeydown(messageSuccess);
 };
 //showMessageSuccess();
+
+// показ сообщения об ошибке
+// eslint-disable-next-line no-unused-vars
+const showMessageError = () => {
+  const messageTemplate = document.querySelector('#error').content.querySelector('.error');
+  const messageError = messageTemplate.cloneNode(true);
+  document.body.append(messageError);
+  onBodyClick(messageError);
+  onButtonKeydown(messageError);
+  onButtonClick(messageError);
+};
+//showMessageError();
 
 
 export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};
