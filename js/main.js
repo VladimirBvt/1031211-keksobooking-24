@@ -5,6 +5,7 @@ import './similar-list.js';
 import './user-form.js';
 import {renderMarkerNotices, mymap} from './map.js';
 import {setUserFormSubmit} from './user-form.js';
+import {showAlert} from './util.js';
 
 const form = document.querySelector('.ad-form');
 const SIMILAR_NOTICE_COUNT = 10;
@@ -24,8 +25,7 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
     });
   })
   .catch((err) => {
-    // eslint-disable-next-line no-console
-    console.error(err);
+    showAlert(err);
   });
 
 // отправка формы
