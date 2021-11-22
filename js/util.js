@@ -58,8 +58,7 @@ getRandomPositiveFloat();
 function getRandomIntInclusive(min, max) {
   //max <= min ? console.log('Ошибка. Введите значение большее, чем min.');
   if (max <= min) {
-    // eslint-disable-next-line no-console
-    console.log('Ошибка. Введите значение большее, чем min.');
+    //console.log('Ошибка. Введите значение большее, чем min.');
   } else {
     min < 0 ? (min *= -1) : min;
     max < 0 ? (max *= -1) : max;
@@ -79,8 +78,7 @@ function rounding(num, zeros) {
 //Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно. decimalPlaces - количество знаков после запятой.
 function getRandomArbitrary(min, max, decimalPlaces) {
   if (max <= min) {
-    // eslint-disable-next-line no-console
-    console.log('Ошибка. Введите значение большее, чем min.');
+    //console.log('Ошибка. Введите значение большее, чем min.');
   }
   min < 0 ? (min *= -1) : min;
   max < 0 ? (max *= -1) : max;
@@ -116,4 +114,72 @@ const getUserNumbers = () => {
 };
 getUserNumbers();
 
-export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers};
+// закрытие сообщения по клику на произвольную область экрана
+const onBodyClick = (messageElement) => {
+  document.body.addEventListener('click', () => {
+    messageElement.classList.add('hidden');
+  });
+};
+
+// закрытие сообщения по нажатию клавиши Esc
+const onButtonKeydown = (messageElement) => {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      messageElement.classList.add('hidden');
+    }
+  });
+};
+
+// закрытие сообщения по нажатию на кнопку
+const onButtonClick = (messageElement) => {
+  const button = document.querySelector('.error__button');
+  button.addEventListener('click', () => {
+    messageElement.classList.add('hidden');
+  });
+};
+
+
+// показ сообщения об успешной отправки данных
+const showMessageSuccess = () => {
+  const messageTemplate = document.querySelector('#success').content.querySelector('.success');
+  const messageSuccess = messageTemplate.cloneNode(true);
+  document.body.append(messageSuccess);
+  onBodyClick(messageSuccess);
+  onButtonKeydown(messageSuccess);
+};
+
+// показ сообщения об ошибке отправки формы (POST)
+const showMessageError = () => {
+  const messageTemplate = document.querySelector('#error').content.querySelector('.error');
+  const messageError = messageTemplate.cloneNode(true);
+  document.body.append(messageError);
+  onBodyClick(messageError);
+  onButtonKeydown(messageError);
+  onButtonClick(messageError);
+};
+
+const ALERT_SHOW_TIME = 5;
+
+// показ сообщения об ошибке неудачной загрузки данных (GET)
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = 100;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = 0;
+  alertContainer.style.top = 0;
+  alertContainer.style.right = 0;
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
+
+export {getRandomPositiveInteger, getRandomPositiveFloat, getRandomIntInclusive, rounding, getRandomArbitrary, getArrayWithUniqueElements, getUserNumbers, showMessageSuccess, showMessageError, showAlert};

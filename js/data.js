@@ -56,7 +56,7 @@ const getType = function () {
   const valuesType = Object.values(type);
   return valuesType[0];
 };
-
+// создание случайного объявления из диапазона данных
 const createAnnouncement = () => {
   const getRandomPhotosLength = getRandomIntInclusive(0, PHOTOS.length);
   const getRandomArrayPhotos = () => PHOTOS[getRandomIntInclusive(0, PHOTOS.length - 1)];
@@ -64,11 +64,6 @@ const createAnnouncement = () => {
   const getRandomArrayFeatures = () => FEATURES[getRandomIntInclusive(0, FEATURES.length - 1)];
   const getRandomLat = () => getRandomArbitrary(MIN_LAT, MAX_LAT, 5);
   const getRandomLng = () => getRandomArbitrary(MIN_LNG, MAX_LNG, 5);
-  /*const createPhotos = function () {
-    const getSources = Array.from({length: getRandomPhotosLength}, getRandomArrayPhotos);
-    return console.log(getSources);
-  };
-  createPhotos();*/
 
   return {
     author: {
@@ -94,6 +89,7 @@ const createAnnouncement = () => {
   };
 };
 
+// создание массива из 10 похожих объявлений
 const noticesRandom = Array.from({length: SIMILAR_ANNOUNCEMENT_COUNT}, createAnnouncement);
 
 export {createAnnouncement, ArrayUserNumbers, noticesRandom, TYPES, TIMES};

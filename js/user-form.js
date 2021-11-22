@@ -1,5 +1,8 @@
-import {cardsContainer} from './popup.js';
+import {cardsContainer} from './similar-list.js';
 import {TYPES, TIMES} from './data.js';
+
+import {showMessageSuccess, showMessageError} from './util.js';
+import {returnOriginPositionMarker} from './map.js';
 
 const notices = cardsContainer.querySelectorAll('.popup');
 const form = document.querySelector('.ad-form');
@@ -138,5 +141,31 @@ timeOut.addEventListener('change', () => {
   }
 });
 
+// объявление функции отправки формы методом AJAX
+const setUserFormSubmit = () => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
-export {enableActivity, enableInactivity};
+    const formData = new FormData(evt.target);
+
+    fetch(
+      'https://24.javascript.pages.academy/keksobooking',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    ).then(() => {
+      showMessageSuccess();
+    })
+      .then(() => {
+        form.reset();
+      })
+      .then(() => {
+        returnOriginPositionMarker();
+      })
+      .catch(showMessageError);
+  });
+};
+
+
+export {enableActivity, enableInactivity, setUserFormSubmit};
