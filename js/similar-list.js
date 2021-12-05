@@ -10,5 +10,36 @@ const clearPhotosContainer = function () {
 };
 clearPhotosContainer();
 
+const Default = {
+  TYPE: 'bungalow',
+  PRICE: 1000,
+  ROOMS: 2,
+  CAPACITY: 2,
+};
+
+const getNoticeRank = (notice) => {
+  const typeInput = document.querySelector('[name="type"]');
+  const priceInput = document.querySelector('[name="price"]');
+  const roomsInput = document.querySelector('[name="rooms"]');
+  const capacityInput = document.querySelector('[name="capacity"]');
+
+  let rank = 0;
+
+  if (notice.offer.type === typeInput.value || Default.TYPE) {
+    rank += 5;
+  }
+  if (notice.offer.price === priceInput.value || Default.PRICE) {
+    rank += 3;
+  }
+  if (notice.offer.rooms === roomsInput.value || Default.ROOMS) {
+    rank += 2;
+  }
+  if (notice.offer.guests === capacityInput.value || Default.CAPACITY) {
+    rank += 2;
+  }
+
+  return rank;
+};
+getNoticeRank();
 
 export {cardsContainer, similarNotices};

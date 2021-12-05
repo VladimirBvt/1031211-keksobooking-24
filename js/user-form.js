@@ -147,7 +147,6 @@ const setUserFormSubmit = () => {
     evt.preventDefault();
 
     const formData = new FormData(evt.target);
-
     fetch(
       'https://24.javascript.pages.academy/keksobooking',
       {

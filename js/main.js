@@ -8,7 +8,6 @@ import {setUserFormSubmit} from './user-form.js';
 import {showAlert} from './util.js';
 
 const form = document.querySelector('.ad-form');
-const SIMILAR_NOTICE_COUNT = 10;
 
 fetch('https://24.javascript.pages.academy/keksobooking/data')
   .then((response) => {
@@ -18,7 +17,7 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
     throw new Error(`${response.status} ${response.statusText}`);
   })
   .then((notices) => {
-    renderMarkerNotices(notices.slice(0, SIMILAR_NOTICE_COUNT));
+    renderMarkerNotices(notices);
     form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       mymap.closePopup();
