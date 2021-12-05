@@ -17,6 +17,7 @@ const Default = {
   CAPACITY: 2,
 };
 
+// eslint-disable-next-line no-unused-vars
 const getNoticeRank = (notice) => {
   const typeInput = document.querySelector('[name="type"]');
   const priceInput = document.querySelector('[name="price"]');
@@ -40,6 +41,6 @@ const getNoticeRank = (notice) => {
 
   return rank;
 };
-getNoticeRank();
+//getNoticeRank();
 
 export {cardsContainer, similarNotices};
